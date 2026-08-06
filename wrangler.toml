@@ -1,0 +1,20 @@
+name = "karymera"
+main = "worker.js"
+compatibility_date = "2026-07-03"
+
+[assets]
+directory = "./"
+binding = "ASSETS"
+run_worker_first = ["/", "/index.html", "/api/*"]
+
+kv_namespaces = [
+  { binding = "STORE_KV", id = "0fdabb9050184676ac74e58fc8e60fd4" }
+]
+
+# ===== R2 Bucket لتخزين صور المتجر (بديل عن الروابط الخارجية) =====
+# لازم تنشئ الـ bucket ده من الداشبورد أولاً (R2 -> Create bucket -> اسمه "karystore-images")
+[[r2_buckets]]
+binding = "STORE_IMAGES"
+bucket_name = "karystore-images"
+
+# ADMIN_HASH بيتضاف كـ Secret من Settings -> Variables and secrets في الداشبورد
